@@ -48,7 +48,7 @@ class CSVRenderer(BaseRenderer):
 
         return csv_buffer.getvalue()
 
-    def tablize(self, data):
+    def tablize(self, data, headers=None):
         """
         Convert a list of data into a table.
         """
@@ -59,7 +59,7 @@ class CSVRenderer(BaseRenderer):
             # each item designates the name of the column that the item will
             # fall into.
             data = self.flatten_data(data)
-            data.header = data.header or self.headers
+            data.header = data.header or self.headers or headers
 
             # Get the set of all unique headers, and sort them (unless already provided).
             if not data.header:
